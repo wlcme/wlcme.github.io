@@ -26,7 +26,7 @@
     };
   </script>
 
-  <!-- Heroicons CDN -->
+  <!-- Feather Icons -->
   <script src="https://unpkg.com/feather-icons"></script>
 
   <style>
@@ -34,7 +34,8 @@
       font-family: 'Inter', sans-serif;
       background: white;
       color: #111;
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: auto;
     }
     canvas {
       position: fixed;
@@ -48,47 +49,85 @@
       background: white;
     }
     .icon {
-      width: 18px;
-      height: 18px;
-      vertical-align: middle;
-      margin-right: 6px;
-      stroke-width: 2;
+      width: 24px;
+      height: 24px;
+      stroke-width: 1.8;
+      margin-bottom: 12px;
+      color: #3B82F6;
     }
   </style>
 </head>
-<body class="flex items-center justify-center min-h-screen">
+<body class="flex flex-col items-center justify-start min-h-screen">
 
   <!-- Canvas Animation Background -->
   <canvas id="artPlum"></canvas>
 
-  <!-- Landing Content -->
-  <div class="text-center px-6">
+  <!-- Hero Section -->
+  <section class="text-center px-6 py-16">
     <h1 class="text-6xl md:text-7xl font-serif font-bold mb-4 tracking-wide">
       <span class="text-black">WELCOME</span>
     </h1>
-
     <p class="text-lg md:text-xl text-gray-600 max-w-xl mx-auto mb-8">
       We craft <span class="text-brandBlue font-medium">digital invitation cards</span> that make your
-      special moments elegant and memorable — for weddings, birthdays, corporate events and more.
+      special moments elegant and memorable — for weddings, birthdays, corporate events, and more.
     </p>
 
     <!-- Contact Buttons -->
     <div class="flex justify-center gap-4 flex-wrap">
       <a href="mailto:your@email.com"
          class="px-5 py-3 text-lg border border-black text-black hover:bg-black hover:text-white transition font-medium flex items-center justify-center gap-2">
-         <i data-feather="mail" class="icon"></i> Email Us
+         <i data-feather="mail" class="w-5 h-5"></i> Email Us
       </a>
 
       <a href="https://wa.me/919999999999" target="_blank"
          class="px-5 py-3 text-lg bg-black text-white hover:bg-white hover:text-black border border-black transition font-medium flex items-center justify-center gap-2">
-         <i data-feather="message-circle" class="icon"></i> WhatsApp
+         <i data-feather="message-circle" class="w-5 h-5"></i> WhatsApp
       </a>
     </div>
+  </section>
 
-    <p class="text-gray-500 text-sm mt-8 italic">Design. Personalize. Invite with style.</p>
-  </div>
+  <!-- Features Section -->
+  <section class="w-full max-w-6xl px-6 py-12">
+    <h2 class="text-3xl md:text-4xl font-serif text-center mb-12">Our Features</h2>
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+      
+      <!-- Feature 1 -->
+      <div class="border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md transition text-center">
+        <i data-feather="link" class="icon mx-auto"></i>
+        <h3 class="font-semibold text-lg mb-2">Digital Invitation Links</h3>
+        <p class="text-gray-600 text-sm">Send elegant invitation links that open beautifully on any device — no app required.</p>
+      </div>
 
-  <!-- Grey Branch Animation -->
+      <!-- Feature 2 -->
+      <div class="border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md transition text-center">
+        <i data-feather="user" class="icon mx-auto"></i>
+        <h3 class="font-semibold text-lg mb-2">Custom Names per Guest</h3>
+        <p class="text-gray-600 text-sm">Personalize each invite with your guest’s name for a special, thoughtful touch.</p>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md transition text-center">
+        <i data-feather="map-pin" class="icon mx-auto"></i>
+        <h3 class="font-semibold text-lg mb-2">Location Map Integration</h3>
+        <p class="text-gray-600 text-sm">Embed Google Maps directly in your invitation — making it easy for guests to find you.</p>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md transition text-center">
+        <i data-feather="smartphone" class="icon mx-auto"></i>
+        <h3 class="font-semibold text-lg mb-2">Interactive Invitations</h3>
+        <p class="text-gray-600 text-sm">Make it dynamic with animations, music, and clickable actions for an engaging experience.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-gray-500 text-sm text-center py-10">
+    © 2025 WELCOME Invitations • Designed with ❤️ in Digital
+  </footer>
+
+  <!-- Branch Animation -->
   <script>
     const MAX_DEPTH = 25;
     const BRANCH_SPREAD = Math.PI / 12;
@@ -171,7 +210,6 @@
     ctx.lineWidth = LINE_WIDTH;
     reset();
 
-    // Initialize Feather Icons
     feather.replace();
   </script>
 </body>
