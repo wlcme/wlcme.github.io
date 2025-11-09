@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome | Digital Invitation Studio</title>
+  <title>WELCOME | Digital Invitation Studio</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <!-- Tailwind -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -18,6 +18,9 @@
             serif: ['"Playfair Display"', 'serif'],
             sans: ['Inter', 'sans-serif'],
           },
+          colors: {
+            brandBlue: '#3B82F6', // Tailwind blue-500
+          },
         },
       },
     };
@@ -26,8 +29,9 @@
   <style>
     body {
       font-family: 'Inter', sans-serif;
+      background: white;
+      color: #111;
       overflow: hidden;
-      background: radial-gradient(circle at center, #f9fafb 0%, #f3f4f6 100%);
     }
     canvas {
       position: fixed;
@@ -38,47 +42,48 @@
       pointer-events: none;
       display: block;
       z-index: -1;
+      background: white;
     }
   </style>
 </head>
-<body class="text-gray-800 flex items-center justify-center min-h-screen">
+<body class="flex items-center justify-center min-h-screen">
 
-  <!-- Background Animation -->
+  <!-- Canvas Animation Background -->
   <canvas id="artPlum"></canvas>
 
-  <!-- Landing Page Content -->
+  <!-- Landing Content -->
   <div class="text-center px-6">
-    <h1 class="text-5xl md:text-7xl font-serif font-bold mb-4 text-blue-700 drop-shadow-sm">
-      Welcome to <br><span class="text-blue-500">Digital Invitation Studio</span>
+    <h1 class="text-6xl md:text-7xl font-serif font-bold mb-4 tracking-wide">
+      <span class="text-black">WELCOME</span>
     </h1>
 
-    <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-10">
-      Craft elegant, personalized <span class="font-medium text-blue-600">digital invitation cards</span>
-      for weddings, birthdays, corporate events, and every special moment — all designed your way.
+    <p class="text-lg md:text-xl text-gray-600 max-w-xl mx-auto mb-8">
+      We craft <span class="text-brandBlue font-medium">digital invitation cards</span> that make your
+      special moments elegant and memorable — for weddings, birthdays, corporate events and more.
     </p>
 
-    <!-- Buttons -->
+    <!-- Contact Buttons -->
     <div class="flex justify-center gap-4 flex-wrap">
       <a href="mailto:your@email.com"
-         class="px-6 py-3 text-lg bg-blue-600 text-white rounded-full shadow-md font-medium hover:bg-blue-700 transition">
-        📧 Contact via Email
+         class="px-6 py-3 text-lg border border-black text-black rounded-full hover:bg-black hover:text-white transition font-medium">
+        📧 Email Us
       </a>
 
       <a href="https://wa.me/919999999999" target="_blank"
-         class="px-6 py-3 text-lg bg-green-500 text-white rounded-full shadow-md font-medium hover:bg-green-600 transition">
-        💬 WhatsApp Us
+         class="px-6 py-3 text-lg bg-brandBlue text-white rounded-full hover:bg-blue-600 transition font-medium shadow-sm">
+        💬 WhatsApp
       </a>
     </div>
 
-    <p class="text-gray-500 text-sm mt-6 italic">"Turning your events into digital elegance ✨"</p>
+    <p class="text-gray-500 text-sm mt-8 italic">Design. Personalize. Invite with style.</p>
   </div>
 
-  <!-- Branch Animation Script -->
+  <!-- Grey Branch Animation -->
   <script>
-    const MAX_DEPTH = 30;
+    const MAX_DEPTH = 25;
     const BRANCH_SPREAD = Math.PI / 12;
-    const STROKE_COLOR = "rgba(100, 100, 100, 0.1)";
-    const LINE_WIDTH = 1.2;
+    const STROKE_COLOR = "rgba(0, 0, 0, 0.1)";
+    const LINE_WIDTH = 1;
 
     const canvas = document.getElementById("artPlum");
     const ctx = canvas.getContext("2d");
@@ -93,14 +98,14 @@
     window.addEventListener("resize", resize);
 
     function nextPoint(x, y, len, angle) {
-      return [x + len*Math.cos(angle), y + len*Math.sin(angle)];
+      return [x + len * Math.cos(angle), y + len * Math.sin(angle)];
     }
 
     let next = [];
     let tasks = [];
 
-    function branch(x, y, angle, state={depth:0}) {
-      const len = Math.random()*8 + 2;
+    function branch(x, y, angle, state = { depth: 0 }) {
+      const len = Math.random() * 8 + 2;
       state.depth++;
       const [nx, ny] = nextPoint(x, y, len, angle);
 
@@ -109,51 +114,51 @@
       ctx.lineTo(nx, ny);
       ctx.stroke();
 
-      if(nx<-100 || nx>window.innerWidth+100 || ny<-100 || ny>window.innerHeight+100) return;
+      if (nx < -100 || nx > window.innerWidth + 100 || ny < -100 || ny > window.innerHeight + 100) return;
 
-      const continueChance = state.depth<=MAX_DEPTH ? 0.8 : 0.5;
-      const a1 = angle + Math.random()*BRANCH_SPREAD;
-      const a2 = angle - Math.random()*BRANCH_SPREAD;
+      const continueChance = state.depth <= MAX_DEPTH ? 0.8 : 0.5;
+      const a1 = angle + Math.random() * BRANCH_SPREAD;
+      const a2 = angle - Math.random() * BRANCH_SPREAD;
 
-      if(Math.random() < continueChance) next.push(()=>branch(nx, ny, a1, state));
-      if(Math.random() < continueChance) next.push(()=>branch(nx, ny, a2, state));
+      if (Math.random() < continueChance) next.push(() => branch(nx, ny, a1, state));
+      if (Math.random() < continueChance) next.push(() => branch(nx, ny, a2, state));
     }
 
     function reset() {
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      ctx.strokeStyle=STROKE_COLOR;
-      ctx.lineWidth=LINE_WIDTH;
-      next=[];
-      tasks=[
-        ()=>branch(Math.random()*window.innerWidth, -5, Math.PI/2),
-        ()=>branch(Math.random()*window.innerWidth, window.innerHeight+5, -Math.PI/2),
-        ()=>branch(-5, Math.random()*window.innerHeight, 0),
-        ()=>branch(window.innerWidth+5, Math.random()*window.innerHeight, Math.PI)
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.strokeStyle = STROKE_COLOR;
+      ctx.lineWidth = LINE_WIDTH;
+      next = [];
+      tasks = [
+        () => branch(Math.random() * window.innerWidth, -5, Math.PI / 2),
+        () => branch(Math.random() * window.innerWidth, window.innerHeight + 5, -Math.PI / 2),
+        () => branch(-5, Math.random() * window.innerHeight, 0),
+        () => branch(window.innerWidth + 5, Math.random() * window.innerHeight, Math.PI)
       ];
-      if(window.innerWidth<500)tasks=tasks.slice(0,2);
+      if (window.innerWidth < 500) tasks = tasks.slice(0, 2);
       animate();
     }
 
     let last = performance.now();
-    const frameInterval = 1000/40;
+    const frameInterval = 1000 / 40;
 
-    function animate(){
+    function animate() {
       requestAnimationFrame(animate);
       const now = performance.now();
-      if(now-last<frameInterval) return;
-      last=now;
+      if (now - last < frameInterval) return;
+      last = now;
 
-      const current=tasks;
-      tasks=[];
-      if(!current.length && !next.length) return;
+      const current = tasks;
+      tasks = [];
+      if (!current.length && !next.length) return;
 
-      current.forEach(f => (Math.random()<0.5 ? next.push(f) : f()));
-      tasks=next;
-      next=[];
+      current.forEach(f => (Math.random() < 0.5 ? next.push(f) : f()));
+      tasks = next;
+      next = [];
     }
 
-    ctx.strokeStyle=STROKE_COLOR;
-    ctx.lineWidth=LINE_WIDTH;
+    ctx.strokeStyle = STROKE_COLOR;
+    ctx.lineWidth = LINE_WIDTH;
     reset();
   </script>
 </body>
