@@ -1,44 +1,160 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><title>Grey Branch Animation</title><style>html,body{margin:0;padding:0;overflow:hidden;background:radial-gradient(circle at center,#111 0%,#000 100%)}canvas{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;display:block}</style></head><body><canvas id="artPlum"></canvas><script>
-(function(){
-"use strict";
-const D=30,S=Math.PI/12,C="rgba(200,200,200,0.25)",W=1.2,c=document.getElementById("artPlum"),x=c.getContext("2d");
-function R(){const e=window.devicePixelRatio||1;c.width=window.innerWidth*e;c.height=window.innerHeight*e;x.setTransform(e,0,0,e,0,0)}
-function N(e,t,n,a){return[e+n*Math.cos(a),t+n*Math.sin(a)]}
-let q=[],z=[];
-function B(e,t,n,a={depth:0}){const i=8*Math.random()+2;a.depth++;const[r,o]=N(e,t,i,n);
-x.beginPath();x.moveTo(e,t);x.lineTo(r,o);x.stroke();
-if(r<-100||r>window.innerWidth+100||o<-100||o>window.innerHeight+100)return;
-const s=a.depth<=D?.8:.5,h=n+Math.random()*S,l=n-Math.random()*S;
-Math.random()<s&&q.push(()=>B(r,o,h,a));
-Math.random()<s&&q.push(()=>B(r,o,l,a))}
-function Y(){
-x.clearRect(0,0,c.width,c.height);
-x.strokeStyle=C;x.lineWidth=W;q=[];
-z=[
-()=>B(Math.random()*window.innerWidth,-5,Math.PI/2),
-()=>B(Math.random()*window.innerWidth,window.innerHeight+5,-Math.PI/2),
-()=>B(-5,Math.random()*window.innerHeight,0),
-()=>B(window.innerWidth+5,Math.random()*window.innerHeight,Math.PI)
-];
-if(window.innerWidth<500)z=z.slice(0,2);
-U()
-}
-let L=performance.now();const I=25;
-function U(){
-requestAnimationFrame(U);
-const e=performance.now();
-if(e-L<I)return;
-L=e;
-const t=z;
-z=[];
-if(!t.length&&!q.length)return;
-t.forEach(e=>Math.random()<.5?q.push(e):e());
-z=q;q=[];
-}
-R();
-window.addEventListener("resize",R);
-x.strokeStyle=C;
-x.lineWidth=W;
-Y();
-})();
-</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome | Digital Invitation Studio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow: hidden;
+      background: radial-gradient(circle at center, #f9fafb 0%, #f3f4f6 100%);
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      display: block;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body class="text-gray-800 flex items-center justify-center min-h-screen">
+
+  <!-- Background Animation -->
+  <canvas id="artPlum"></canvas>
+
+  <!-- Landing Page Content -->
+  <div class="text-center px-6">
+    <h1 class="text-5xl md:text-7xl font-serif font-bold mb-4 text-blue-700 drop-shadow-sm">
+      Welcome to <br><span class="text-blue-500">Digital Invitation Studio</span>
+    </h1>
+
+    <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-10">
+      Craft elegant, personalized <span class="font-medium text-blue-600">digital invitation cards</span>
+      for weddings, birthdays, corporate events, and every special moment — all designed your way.
+    </p>
+
+    <!-- Buttons -->
+    <div class="flex justify-center gap-4 flex-wrap">
+      <a href="mailto:your@email.com"
+         class="px-6 py-3 text-lg bg-blue-600 text-white rounded-full shadow-md font-medium hover:bg-blue-700 transition">
+        📧 Contact via Email
+      </a>
+
+      <a href="https://wa.me/919999999999" target="_blank"
+         class="px-6 py-3 text-lg bg-green-500 text-white rounded-full shadow-md font-medium hover:bg-green-600 transition">
+        💬 WhatsApp Us
+      </a>
+    </div>
+
+    <p class="text-gray-500 text-sm mt-6 italic">"Turning your events into digital elegance ✨"</p>
+  </div>
+
+  <!-- Branch Animation Script -->
+  <script>
+    const MAX_DEPTH = 30;
+    const BRANCH_SPREAD = Math.PI / 12;
+    const STROKE_COLOR = "rgba(100, 100, 100, 0.1)";
+    const LINE_WIDTH = 1.2;
+
+    const canvas = document.getElementById("artPlum");
+    const ctx = canvas.getContext("2d");
+
+    function resize() {
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resize();
+    window.addEventListener("resize", resize);
+
+    function nextPoint(x, y, len, angle) {
+      return [x + len*Math.cos(angle), y + len*Math.sin(angle)];
+    }
+
+    let next = [];
+    let tasks = [];
+
+    function branch(x, y, angle, state={depth:0}) {
+      const len = Math.random()*8 + 2;
+      state.depth++;
+      const [nx, ny] = nextPoint(x, y, len, angle);
+
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(nx, ny);
+      ctx.stroke();
+
+      if(nx<-100 || nx>window.innerWidth+100 || ny<-100 || ny>window.innerHeight+100) return;
+
+      const continueChance = state.depth<=MAX_DEPTH ? 0.8 : 0.5;
+      const a1 = angle + Math.random()*BRANCH_SPREAD;
+      const a2 = angle - Math.random()*BRANCH_SPREAD;
+
+      if(Math.random() < continueChance) next.push(()=>branch(nx, ny, a1, state));
+      if(Math.random() < continueChance) next.push(()=>branch(nx, ny, a2, state));
+    }
+
+    function reset() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      ctx.strokeStyle=STROKE_COLOR;
+      ctx.lineWidth=LINE_WIDTH;
+      next=[];
+      tasks=[
+        ()=>branch(Math.random()*window.innerWidth, -5, Math.PI/2),
+        ()=>branch(Math.random()*window.innerWidth, window.innerHeight+5, -Math.PI/2),
+        ()=>branch(-5, Math.random()*window.innerHeight, 0),
+        ()=>branch(window.innerWidth+5, Math.random()*window.innerHeight, Math.PI)
+      ];
+      if(window.innerWidth<500)tasks=tasks.slice(0,2);
+      animate();
+    }
+
+    let last = performance.now();
+    const frameInterval = 1000/40;
+
+    function animate(){
+      requestAnimationFrame(animate);
+      const now = performance.now();
+      if(now-last<frameInterval) return;
+      last=now;
+
+      const current=tasks;
+      tasks=[];
+      if(!current.length && !next.length) return;
+
+      current.forEach(f => (Math.random()<0.5 ? next.push(f) : f()));
+      tasks=next;
+      next=[];
+    }
+
+    ctx.strokeStyle=STROKE_COLOR;
+    ctx.lineWidth=LINE_WIDTH;
+    reset();
+  </script>
+</body>
+</html>
