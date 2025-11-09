@@ -19,12 +19,15 @@
             sans: ['Inter', 'sans-serif'],
           },
           colors: {
-            brandBlue: '#3B82F6', // Tailwind blue-500
+            brandBlue: '#3B82F6',
           },
         },
       },
     };
   </script>
+
+  <!-- Heroicons CDN -->
+  <script src="https://unpkg.com/feather-icons"></script>
 
   <style>
     body {
@@ -43,6 +46,13 @@
       display: block;
       z-index: -1;
       background: white;
+    }
+    .icon {
+      width: 18px;
+      height: 18px;
+      vertical-align: middle;
+      margin-right: 6px;
+      stroke-width: 2;
     }
   </style>
 </head>
@@ -65,13 +75,13 @@
     <!-- Contact Buttons -->
     <div class="flex justify-center gap-4 flex-wrap">
       <a href="mailto:your@email.com"
-         class="px-6 py-3 text-lg border border-black text-black rounded-full hover:bg-black hover:text-white transition font-medium">
-        📧 Email Us
+         class="px-5 py-3 text-lg border border-black text-black hover:bg-black hover:text-white transition font-medium flex items-center justify-center gap-2">
+         <i data-feather="mail" class="icon"></i> Email Us
       </a>
 
       <a href="https://wa.me/919999999999" target="_blank"
-         class="px-6 py-3 text-lg bg-brandBlue text-white rounded-full hover:bg-blue-600 transition font-medium shadow-sm">
-        💬 WhatsApp
+         class="px-5 py-3 text-lg bg-black text-white hover:bg-white hover:text-black border border-black transition font-medium flex items-center justify-center gap-2">
+         <i data-feather="message-circle" class="icon"></i> WhatsApp
       </a>
     </div>
 
@@ -160,6 +170,9 @@
     ctx.strokeStyle = STROKE_COLOR;
     ctx.lineWidth = LINE_WIDTH;
     reset();
+
+    // Initialize Feather Icons
+    feather.replace();
   </script>
 </body>
 </html>
