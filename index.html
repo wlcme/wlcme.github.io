@@ -36,7 +36,6 @@
       color: #111;
       overflow-x: hidden;
       overflow-y: auto;
-      transition: background 0.5s ease-in-out;
     }
     canvas {
       position: fixed;
@@ -48,8 +47,6 @@
       display: block;
       z-index: -1;
       background: white;
-      opacity: 0;
-      transition: opacity 0.8s ease-in-out;
     }
     .icon {
       width: 24px;
@@ -140,23 +137,21 @@
     const canvas = document.getElementById("artPlum");
     const ctx = canvas.getContext("2d");
 
-    let next = [];
-    let tasks = [];
-    let animationId = null; // Track current animation frame
-
-    function resize() {
+    function resizeOnce() {
       const dpr = window.devicePixelRatio || 1;
       canvas.width = window.innerWidth * dpr;
       canvas.height = window.innerHeight * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-      cancelAnimationFrame(animationId); // Stop old animation
-      reset(); // Restart fresh animation
     }
+
+    resizeOnce(); // only once, no redraw later
 
     function nextPoint(x, y, len, angle) {
       return [x + len * Math.cos(angle), y + len * Math.sin(angle)];
     }
+
+    let next = [];
+    let tasks = [];
 
     function branch(x, y, angle, state = { depth: 0 }) {
       const len = Math.random() * 8 + 2;
@@ -168,8 +163,7 @@
       ctx.lineTo(nx, ny);
       ctx.stroke();
 
-      if (nx < -100 || nx > window.innerWidth + 100 || ny < -100 || ny > window.innerHeight + 100)
-        return;
+      if (nx < -100 || nx > window.innerWidth + 100 || ny < -100 || ny > window.innerHeight + 100) return;
 
       const continueChance = state.depth <= MAX_DEPTH ? 0.8 : 0.5;
       const a1 = angle + Math.random() * BRANCH_SPREAD;
@@ -179,11 +173,9 @@
       if (Math.random() < continueChance) next.push(() => branch(nx, ny, a2, state));
     }
 
-    function reset() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    function init() {
       ctx.strokeStyle = STROKE_COLOR;
       ctx.lineWidth = LINE_WIDTH;
-      next = [];
       tasks = [
         () => branch(Math.random() * window.innerWidth, -5, Math.PI / 2),
         () => branch(Math.random() * window.innerWidth, window.innerHeight + 5, -Math.PI / 2),
@@ -191,19 +183,14 @@
         () => branch(window.innerWidth + 5, Math.random() * window.innerHeight, Math.PI)
       ];
       if (window.innerWidth < 500) tasks = tasks.slice(0, 2);
-
-      canvas.style.opacity = 0;
-      setTimeout(() => {
-        canvas.style.opacity = 1;
-        animate();
-      }, 100);
+      animate();
     }
 
     let last = performance.now();
     const frameInterval = 1000 / 40;
 
     function animate() {
-      animationId = requestAnimationFrame(animate);
+      requestAnimationFrame(animate);
       const now = performance.now();
       if (now - last < frameInterval) return;
       last = now;
@@ -217,9 +204,7 @@
       next = [];
     }
 
-    // Initialize
-    resize();
-    window.addEventListener("resize", resize);
+    init();
 
     feather.replace();
   </script>
