@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aisha & Rahil | Wedding Invitation</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Feather Icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fafaf7;
+      color: #374151;
+      scroll-behavior: smooth;
+    }
+    .font-playfair {
+      font-family: 'Playfair Display', serif;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 100%;
+      background-color: #a3e635; /* tropical lime-green line */
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Hero -->
+  <section class="text-center py-24">
+    <h1 class="font-playfair text-5xl text-emerald-700 mb-3">Aisha & Rahil</h1>
+    <p class="text-lg text-gray-600 mb-2">Together with their families invite you to celebrate their wedding</p>
+    <p class="text-xl text-emerald-800 font-medium">February 14, 2026 • Jaipur, India</p>
+  </section>
+
+  <!-- Couple Section -->
+  <section class="py-16 bg-white text-center">
+    <h2 class="font-playfair text-4xl text-emerald-700 mb-10">Meet the Couple</h2>
+    <div class="flex flex-col md:flex-row items-center justify-center gap-10 px-6">
+      <div>
+        <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=400&q=80" 
+             alt="Bride" class="w-56 h-56 object-cover rounded-full mx-auto border-4 border-lime-300 shadow-sm mb-4">
+        <h3 class="text-2xl font-playfair text-gray-700">Aisha</h3>
+        <p class="text-gray-500">The bride who brings sunshine wherever she goes.</p>
+      </div>
+      <div>
+        <img src="https://images.unsplash.com/photo-1600181950091-3c5b1e06f4f2?auto=format&fit=crop&w=400&q=80" 
+             alt="Groom" class="w-56 h-56 object-cover rounded-full mx-auto border-4 border-lime-300 shadow-sm mb-4">
+        <h3 class="text-2xl font-playfair text-gray-700">Rahil</h3>
+        <p class="text-gray-500">The groom with a smile that lights up the world.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="py-20 bg-lime-50 relative">
+    <h2 class="font-playfair text-4xl text-emerald-700 text-center mb-16">Wedding Events</h2>
+    <div class="timeline relative max-w-4xl mx-auto">
+      <div class="flex flex-col space-y-16 relative">
+
+        <!-- Event 1 -->
+        <div class="flex flex-col md:flex-row items-center gap-8 relative">
+          <div class="w-full md:w-1/2 text-right md:pr-10">
+            <h4 class="text-lg font-semibold text-emerald-800">Haldi Ceremony</h4>
+            <p class="text-gray-600">10:00 AM • February 13, 2026</p>
+            <p class="text-gray-500">Family Garden, Jaipur</p>
+          </div>
+          <div class="hidden md:block w-6 h-6 bg-lime-400 border-4 border-white rounded-full z-10"></div>
+          <div class="w-full md:w-1/2"></div>
+        </div>
+
+        <!-- Event 2 -->
+        <div class="flex flex-col md:flex-row items-center gap-8 relative">
+          <div class="w-full md:w-1/2"></div>
+          <div class="hidden md:block w-6 h-6 bg-lime-400 border-4 border-white rounded-full z-10"></div>
+          <div class="w-full md:w-1/2 md:pl-10 text-left">
+            <h4 class="text-lg font-semibold text-emerald-800">Wedding Ceremony</h4>
+            <p class="text-gray-600">6:00 PM • February 14, 2026</p>
+            <p class="text-gray-500">The Royal Palace, Jaipur</p>
+          </div>
+        </div>
+
+        <!-- Event 3 -->
+        <div class="flex flex-col md:flex-row items-center gap-8 relative">
+          <div class="w-full md:w-1/2 text-right md:pr-10">
+            <h4 class="text-lg font-semibold text-emerald-800">Reception</h4>
+            <p class="text-gray-600">8:00 PM • February 15, 2026</p>
+            <p class="text-gray-500">Le Grand Ballroom, Jaipur</p>
+          </div>
+          <div class="hidden md:block w-6 h-6 bg-lime-400 border-4 border-white rounded-full z-10"></div>
+          <div class="w-full md:w-1/2"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Location -->
+  <section class="py-20 bg-white text-center">
+    <h2 class="font-playfair text-4xl text-emerald-700 mb-10">Venue Location</h2>
+    <div class="max-w-4xl mx-auto">
+      <iframe
+        class="w-full h-80 rounded-2xl shadow-sm"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.562472132285!2d75.80818987545822!3d26.85214087667704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db5d40533b197%3A0x61e1d14ea5a8780!2sCity%20Palace%20Jaipur!5e0!3m2!1sen!2sin!4v1704355592750!5m2!1sen!2sin"
+        allowfullscreen="" loading="lazy">
+      </iframe>
+      <p class="mt-4 text-gray-600">City Palace, Jaipur, Rajasthan, India</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 text-center text-sm text-gray-500 bg-lime-50">
+    <p>© 2026 Aisha & Rahil • Designed with 🌿 by WELCOME Invitations</p>
+  </footer>
+
+  <script>
+    feather.replace();
+  </script>
+</body>
+</html>
