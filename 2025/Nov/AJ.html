@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aarav & Jasmine | Wedding Invitation</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'rose-light': '#fdf2f8',
+                        'rose-medium': '#fce7f3',
+                        'rose-dark': '#f9a8d4',
+                        'cream': '#fef7ed',
+                        'blush': '#fff1f2',
+                    },
+                    fontFamily: {
+                        'display': ['Playfair Display', 'serif'],
+                        'body': ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fadeIn': 'fadeIn 1s ease-in-out',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Floating hearts animation */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f9a8d4'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #fdf2f8;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #f9a8d4;
+            border-radius: 3px;
+        }
+        
+        /* Section animations */
+        section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="font-body bg-rose-light text-gray-700">
+    <!-- Floating Hearts Background -->
+    <div class="floating-hearts" id="hearts"></div>
+    
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="fixed bottom-8 right-8 bg-rose-dark text-white p-3 rounded-full shadow-lg z-50 opacity-0 transition-opacity duration-300">
+        <i data-feather="arrow-up"></i>
+    </button>
+    
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-rose-light to-blush px-4 py-16">
+        <div class="text-center max-w-3xl mx-auto">
+            <h1 class="text-5xl md:text-7xl font-display font-medium text-gray-800 mb-4 animate-fadeIn">Aarav & Jasmine</h1>
+            <div class="flex justify-center space-x-4 mb-6">
+                <i data-feather="heart" class="text-rose-dark"></i>
+                <i data-feather="heart" class="text-rose-dark"></i>
+                <i data-feather="heart" class="text-rose-dark"></i>
+            </div>
+            <p class="text-xl md:text-2xl text-gray-600 mb-8">Together with our families, we invite you to celebrate our wedding</p>
+            <div class="bg-white/70 backdrop-blur-sm rounded-lg p-6 shadow-sm max-w-md mx-auto mb-8">
+                <p class="text-lg font-medium text-gray-800">Saturday, June 15, 2024</p>
+                <p class="text-gray-600">4:00 PM onwards</p>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-display font-medium text-gray-800 mb-8">You're Invited</h2>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 mt-8">
+                <a href="#rsvp" class="bg-rose-dark hover:bg-rose-700 text-white px-6 py-3 rounded-full transition-colors duration-300 flex items-center justify-center">
+                    <i data-feather="calendar" class="mr-2"></i> Save the Date
+                </a>
+                <a href="#timeline" class="border border-rose-dark text-rose-dark hover:bg-rose-dark hover:text-white px-6 py-3 rounded-full transition-colors duration-300 flex items-center justify-center">
+                    <i data-feather="clock" class="mr-2"></i> View Timeline
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Couple Story Section -->
+    <section id="story" class="py-16 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-display font-medium text-center mb-12">Our Story</h2>
+            
+            <div class="flex flex-col md:flex-row gap-8 mb-12">
+                <!-- Bride Card -->
+                <div class="flex-1 bg-rose-light rounded-2xl p-6 text-center shadow-sm">
+                    <div class="w-32 h-32 bg-rose-medium rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <i data-feather="user" class="text-rose-dark w-12 h-12"></i>
+                    </div>
+                    <h3 class="text-xl font-display font-medium mb-2">Jasmine</h3>
+                    <p class="text-gray-600 mb-4">The Bride</p>
+                    <p class="text-gray-700">Creative soul with a passion for art and literature. Loves rainy days and meaningful conversations over coffee.</p>
+                </div>
+                
+                <!-- Groom Card -->
+                <div class="flex-1 bg-rose-light rounded-2xl p-6 text-center shadow-sm">
+                    <div class="w-32 h-32 bg-rose-medium rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <i data-feather="user" class="text-rose-dark w-12 h-12"></i>
+                    </div>
+                    <h3 class="text-xl font-display font-medium mb-2">Aarav</h3>
+                    <p class="text-gray-600 mb-4">The Groom</p>
+                    <p class="text-gray-700">Adventurous spirit with a love for hiking and photography. Enjoys early mornings and spontaneous road trips.</p>
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-r from-rose-light to-blush rounded-2xl p-8 max-w-3xl mx-auto text-center">
+                <div class="flex justify-center space-x-4 mb-4">
+                    <i data-feather="coffee" class="text-rose-dark"></i>
+                    <i data-feather="book-open" class="text-rose-dark"></i>
+                    <i data-feather="heart" class="text-rose-dark"></i>
+                </div>
+                <p class="text-lg text-gray-700 italic">"We met at a cozy coffee shop on a rainy afternoon. What started with shared laughs over spilled coffee turned into a beautiful journey of love, understanding, and countless shared dreams. We can't wait to begin this new chapter together, surrounded by our loved ones."</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Event Timeline -->
+    <section id="timeline" class="py-16 px-4 bg-rose-light">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-display font-medium text-center mb-12">Wedding Day Timeline</h2>
+            
+            <div class="relative">
+                <!-- Vertical line -->
+                <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-rose-medium"></div>
+                
+                <!-- Timeline items -->
+                <div class="space-y-12">
+                    <!-- Ceremony -->
+                    <div class="relative flex flex-col md:flex-row items-center">
+                        <div class="flex-1 md:text-right md:pr-12 mb-4 md:mb-0 order-2 md:order-1">
+                            <h3 class="text-xl font-display font-medium">Ceremony</h3>
+                            <p class="text-gray-600">4:00 PM - 5:00 PM</p>
+                            <p class="text-gray-700 mt-2">Garden Pavilion</p>
+                        </div>
+                        <div class="w-8 h-8 rounded-full bg-rose-dark flex items-center justify-center order-1 md:order-2 z-10">
+                            <i data-feather="heart" class="text-white w-4 h-4"></i>
+                        </div>
+                        <div class="flex-1 md:pl-12 order-3"></div>
+                    </div>
+                    
+                    <!-- Cocktail Hour -->
+                    <div class="relative flex flex-col md:flex-row items-center">
+                        <div class="flex-1 md:text-right md:pr-12 mb-4 md:mb-0 order-2 md:order-1"></div>
+                        <div class="w-8 h-8 rounded-full bg-rose-dark flex items-center justify-center order-1 md:order-2 z-10">
+                            <i data-feather="users" class="text-white w-4 h-4"></i>
+                        </div>
+                        <div class="flex-1 md:pl-12 order-3">
+                            <h3 class="text-xl font-display font-medium">Cocktail Hour</h3>
+                            <p class="text-gray-600">5:00 PM - 6:00 PM</p>
+                            <p class="text-gray-700 mt-2">Rose Garden Terrace</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Reception -->
+                    <div class="relative flex flex-col md:flex-row items-center">
+                        <div class="flex-1 md:text-right md:pr-12 mb-4 md:mb-0 order-2 md:order-1">
+                            <h3 class="text-xl font-display font-medium">Reception</h3>
+                            <p class="text-gray-600">6:00 PM - 7:30 PM</p>
+                            <p class="text-gray-700 mt-2">Grand Ballroom</p>
+                        </div>
+                        <div class="w-8 h-8 rounded-full bg-rose-dark flex items-center justify-center order-1 md:order-2 z-10">
+                            <i data-feather="music" class="text-white w-4 h-4"></i>
+                        </div>
+                        <div class="flex-1 md:pl-12 order-3"></div>
+                    </div>
+                    
+                    <!-- Dinner -->
+                    <div class="relative flex flex-col md:flex-row items-center">
+                        <div class="flex-1 md:text-right md:pr-12 mb-4 md:mb-0 order-2 md:order-1"></div>
+                        <div class="w-8 h-8 rounded-full bg-rose-dark flex items-center justify-center order-1 md:order-2 z-10">
+                            <i data-feather="coffee" class="text-white w-4 h-4"></i>
+                        </div>
+                        <div class="flex-1 md:pl-12 order-3">
+                            <h3 class="text-xl font-display font-medium">Dinner</h3>
+                            <p class="text-gray-600">7:30 PM - 9:00 PM</p>
+                            <p class="text-gray-700 mt-2">Grand Ballroom</p>
+                        </div>
+                    </div>
+                    
+                    <!-- After Party -->
+                    <div class="relative flex flex-col md:flex-row items-center">
+                        <div class="flex-1 md:text-right md:pr-12 mb-4 md:mb-0 order-2 md:order-1">
+                            <h3 class="text-xl font-display font-medium">After Party</h3>
+                            <p class="text-gray-600">9:00 PM onwards</p>
+                            <p class="text-gray-700 mt-2">Poolside Lounge</p>
+                        </div>
+                        <div class="w-8 h-8 rounded-full bg-rose-dark flex items-center justify-center order-1 md:order-2 z-10">
+                            <i data-feather="star" class="text-white w-4 h-4"></i>
+                        </div>
+                        <div class="flex-1 md:pl-12 order-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Venue & Map Section -->
+    <section id="venue" class="py-16 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-display font-medium text-center mb-12">Venue</h2>
+            
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="flex-1">
+                    <div class="bg-rose-light rounded-2xl p-8 shadow-sm h-full">
+                        <h3 class="text-2xl font-display font-medium mb-4">The Grand Estate</h3>
+                        <p class="text-gray-700 mb-6">A beautiful historic venue with lush gardens and elegant ballrooms, perfect for our special day.</p>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-start">
+                                <i data-feather="map-pin" class="text-rose-dark mr-3 mt-1"></i>
+                                <div>
+                                    <p class="font-medium">Address</p>
+                                    <p class="text-gray-600">123 Rosewood Lane, Blossom Valley, CA 94024</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i data-feather="clock" class="text-rose-dark mr-3 mt-1"></i>
+                                <div>
+                                    <p class="font-medium">Date & Time</p>
+                                    <p class="text-gray-600">Saturday, June 15, 2024 at 4:00 PM</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i data-feather="info" class="text-rose-dark mr-3 mt-1"></i>
+                                <div>
+                                    <p class="font-medium">Parking</p>
+                                    <p class="text-gray-600">Complimentary valet parking available</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="https://maps.google.com" target="_blank" class="inline-flex items-center bg-rose-dark hover:bg-rose-700 text-white px-6 py-3 rounded-full transition-colors duration-300">
+                            <i data-feather="map" class="mr-2"></i> Open in Maps
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="flex-1">
+                    <div class="bg-gray-200 rounded-2xl h-96 flex items-center justify-center shadow-sm">
+                        <div class="text-center">
+                            <i data-feather="map" class="text-rose-dark w-12 h-12 mx-auto mb-4"></i>
+                            <p class="text-gray-600">Interactive Map</p>
+                            <p class="text-gray-500 text-sm">(Would display Google Maps embed)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- RSVP Section -->
+    <section id="rsvp" class="py-16 px-4 bg-gradient-to-br from-rose-light to-blush">
+        <div class="max-w-2xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-display font-medium mb-6">RSVP</h2>
+            <p class="text-lg text-gray-700 mb-8">Please let us know if you can join us for our special day by June 1, 2024</p>
+            
+            <div class="bg-white rounded-2xl p-8 shadow-sm">
+                <div class="flex justify-center space-x-4 mb-6">
+                    <i data-feather="mail" class="text-rose-dark"></i>
+                    <i data-feather="message-circle" class="text-rose-dark"></i>
+                </div>
+                
+                <p class="text-gray-700 mb-6">You can confirm your attendance via email or WhatsApp</p>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="mailto:rsvp@aaravandjasmine.com?subject=Wedding RSVP" class="bg-rose-dark hover:bg-rose-700 text-white px-6 py-3 rounded-full transition-colors duration-300 flex items-center justify-center">
+                        <i data-feather="mail" class="mr-2"></i> Email RSVP
+                    </a>
+                    <a href="https://wa.me/1234567890?text=Hi! I'm confirming my attendance for your wedding." class="border border-rose-dark text-rose-dark hover:bg-rose-dark hover:text-white px-6 py-3 rounded-full transition-colors duration-300 flex items-center justify-center">
+                        <i data-feather="message-circle" class="mr-2"></i> WhatsApp RSVP
+                    </a>
+                </div>
+                
+                <div class="mt-8 pt-6 border-t border-rose-light">
+                    <h3 class="text-xl font-display font-medium mb-4">Countdown to Our Wedding</h3>
+                    <div id="countdown" class="flex justify-center space-x-4">
+                        <div class="text-center">
+                            <div class="bg-rose-light rounded-lg p-3 w-16">
+                                <span id="days" class="text-2xl font-bold text-rose-dark">00</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-1">Days</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-rose-light rounded-lg p-3 w-16">
+                                <span id="hours" class="text-2xl font-bold text-rose-dark">00</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-1">Hours</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-rose-light rounded-lg p-3 w-16">
+                                <span id="minutes" class="text-2xl font-bold text-rose-dark">00</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-1">Minutes</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-rose-light rounded-lg p-3 w-16">
+                                <span id="seconds" class="text-2xl font-bold text-rose-dark">00</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-1">Seconds</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Photo Gallery -->
+    <section id="gallery" class="py-16 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-display font-medium text-center mb-12">Our Memories</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Gallery items - placeholder images -->
+                <div class="bg-rose-light rounded-xl h-48 flex items-center justify-center hover:scale-105 transition-transform duration-300">
+                    <i data-feather="image" class="text-rose-dark w-12 h-12"></i>
+                </div>
+                <div class="bg-rose-light rounded-xl h-48 flex items-center justify-center hover:scale-105 transition-transform duration-300">
+                    <i data-feather="image" class="text-rose-dark w-12 h-12"></i>
+                </div>
+                <div class="bg-rose-light rounded-xl h-48 flex items-center justify-center hover:scale-105 transition-transform duration-300">
+                    <i data-feather="image" class="text-rose-dark w-12 h-12"></i>
+                </div>
+                <div class="bg-rose-light rounded-xl h-48 flex items-center justify-center hover:scale-105 transition-transform duration-300">
+                    <i data-feather="image" class="text-rose-dark w-12 h-12"></i>
+                </div>
+                <div class="bg-rose-light rounded-xl h-48 flex items-center justify-center hover:scale-105 transition-transform duration-300">
+                    <i data-feather="image" class="text-rose-dark w-12 h-12"></i>
+                </div>
+                <div class="bg-rose-light rounded-xl h-48 flex items-center justify-center hover:scale-105 transition-transform duration-300">
+                    <i data-feather="image" class="text-rose-dark w-12 h-12"></i>
+                </div>
+                <div class="bg-rose-light rounded-xl h-48 flex items-center justify-center hover:scale-105 transition-transform duration-300">
+                    <i data-feather="image" class="text-rose-dark w-12 h-12"></i>
+                </div>
+                <div class="bg-rose-light rounded-xl h-48 flex items-center justify-center hover:scale-105 transition-transform duration-300">
+                    <i data-feather="image" class="text-rose-dark w-12 h-12"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials -->
+    <section id="wishes" class="py-16 px-4 bg-rose-light">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-display font-medium text-center mb-12">Wishes from Loved Ones</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Testimonial 1 -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-rose-medium rounded-full flex items-center justify-center mr-4">
+                            <i data-feather="user" class="text-rose-dark"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-medium">Sarah & Michael</h3>
+                            <p class="text-sm text-gray-600">Friends</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic">"We've watched your love story unfold from the very beginning. Your journey together is an inspiration to all of us. Can't wait to celebrate with you!"</p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-rose-medium rounded-full flex items-center justify-center mr-4">
+                            <i data-feather="user" class="text-rose-dark"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-medium">Priya</h3>
+                            <p class="text-sm text-gray-600">Jasmine's Sister</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic">"Seeing my sister so happy with Aarav fills my heart with joy. You two are perfect for each other. Wishing you a lifetime of love and laughter!"</p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-rose-medium rounded-full flex items-center justify-center mr-4">
+                            <i data-feather="user" class="text-rose-dark"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-medium">Rohan</h3>
+                            <p class="text-sm text-gray-600">Aarav's Best Friend</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic">"I've never seen Aarav happier than when he's with Jasmine. You bring out the best in each other. Cheers to a beautiful life together!"</p>
+                </div>
+                
+                <!-- Testimonial 4 -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-rose-medium rounded-full flex items-center justify-center mr-4">
+                            <i data-feather="user" class="text-rose-dark"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-medium">Mr. & Mrs. Sharma</h3>
+                            <p class="text-sm text-gray-600">Family Friends</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic">"We've known both families for years and couldn't be happier about this union. Wishing you both endless blessings and happiness."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Social Share & QR Code -->
+    <section id="share" class="py-16 px-4 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-display font-medium text-center mb-12">Share the Joy</h2>
+            
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <div class="flex-1">
+                    <div class="bg-rose-light rounded-2xl p-8 text-center">
+                        <h3 class="text-xl font-display font-medium mb-4">Share Our Invitation</h3>
+                        <p class="text-gray-700 mb-6">Help us spread the word by sharing our wedding invitation with friends and family</p>
+                        
+                        <div class="flex justify-center space-x-4">
+                            <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full transition-colors duration-300">
+                                <i data-feather="facebook"></i>
+                            </a>
+                            <a href="#" class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition-colors duration-300">
+                                <i data-feather="message-circle"></i>
+                            </a>
+                            <a href="#" class="bg-blue-400 hover:bg-blue-500 text-white p-3 rounded-full transition-colors duration-300">
+                                <i data-feather="twitter"></i>
+                            </a>
+                            <a href="#" class="bg-pink-500 hover:bg-pink-600 text-white p-3 rounded-full transition-colors duration-300">
+                                <i data-feather="instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex-1">
+                    <div class="bg-rose-light rounded-2xl p-8 text-center">
+                        <h3 class="text-xl font-display font-medium mb-4">Scan to View</h3>
+                        <p class="text-gray-700 mb-6">Scan this QR code to view the invitation on your phone</p>
+                        
+                        <div class="bg-white p-4 rounded-lg inline-block">
+                            <div class="w-48 h-48 bg-gray-200 rounded flex items-center justify-center">
+                                <div class="text-center">
+                                    <i data-feather="smartphone" class="text-rose-dark w-12 h-12 mx-auto mb-2"></i>
+                                    <p class="text-gray-600 text-sm">QR Code Placeholder</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Dress Code & Gift Info -->
+    <section id="info" class="py-16 px-4 bg-rose-light">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-display font-medium text-center mb-12">Additional Information</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Dress Code -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <i data-feather="shopping-bag" class="text-rose-dark mr-3"></i>
+                        <h3 class="text-xl font-display font-medium">Dress Code</h3>
+                    </div>
+                    <p class="text-gray-700 mb-4">We'd love to see our guests in elegant, semi-formal attire to match our wedding theme.</p>
+                    <div class="bg-rose-light rounded-lg p-4">
+                        <p class="font-medium text-rose-dark">Smart Casual / Cocktail Attire</p>
+                        <p class="text-sm text-gray-600 mt-1">Think summer dresses, dress shirts, slacks, and blazers</p>
+                    </div>
+                </div>
+                
+                <!-- Gift Info -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <i data-feather="gift" class="text-rose-dark mr-3"></i>
+                        <h3 class="text-xl font-display font-medium">Gift Preferences</h3>
+                    </div>
+                    <p class="text-gray-700 mb-4">Your presence at our wedding is the greatest gift of all. However, if you wish to honor us with a gift, we've created a registry.</p>
+                    <div class="bg-rose-light rounded-lg p-4">
+                        <p class="font-medium text-rose-dark">No boxed gifts, please</p>
+                        <p class="text-sm text-gray-600 mt-1">Your blessings and well wishes are more than enough</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-8 px-4 bg-white border-t border-rose-light">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="text-gray-600">© 2024 Aarav & Jasmine's Wedding. All rights reserved.</p>
+            <p class="text-gray-500 text-sm mt-2">Designed with <i data-feather="heart" class="inline w-4 h-4 text-rose-dark"></i> by WELCOME Invitations</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Initialize Feather Icons
+        feather.replace();
+        
+        // Create floating hearts
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            const heartCount = 15;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                
+                // Random position
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                
+                // Random size
+                const size = Math.random() * 10 + 10;
+                
+                // Random animation delay
+                const delay = Math.random() * 5;
+                
+                heart.style.left = `${left}%`;
+                heart.style.top = `${top}%`;
+                heart.style.width = `${size}px`;
+                heart.style.height = `${size}px`;
+                heart.style.animationDelay = `${delay}s`;
+                
+                heartsContainer.appendChild(heart);
+            }
+        }
+        
+        // Countdown timer
+        function updateCountdown() {
+            const weddingDate = new Date('June 15, 2024 16:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').innerHTML = days.toString().padStart(2, '0');
+            document.getElementById('hours').innerHTML = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').innerHTML = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').innerHTML = seconds.toString().padStart(2, '0');
+        }
+        
+        // Scroll to top button
+        function toggleScrollToTop() {
+            const scrollToTopBtn = document.getElementById('scrollToTop');
+            if (window.scrollY > 300) {
+                scrollToTopBtn.classList.remove('opacity-0');
+            } else {
+                scrollToTopBtn.classList.add('opacity-0');
+            }
+        }
+        
+        // Section animations on scroll
+        function checkVisibility() {
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (sectionTop < windowHeight * 0.85) {
+                    section.classList.add('visible');
+                }
+            });
+        }
+        
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            createHearts();
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+            
+            // Scroll to top button
+            document.getElementById('scrollToTop').addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            window.addEventListener('scroll', function() {
+                toggleScrollToTop();
+                checkVisibility();
+            });
+            
+            // Initial check for visible sections
+            checkVisibility();
+        });
+    </script>
+</body>
+</html>
