@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dev & Beauty | Wedding Invitation</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Feather Icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <!-- Luxury Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --text:#4a3f35;
+      --gold:#b89d6e;
+      --muted:#7b6f67;
+      --white-plain:#ffffff;
+    }
+
+    body {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--text);
+      margin: 0;
+      background: var(--white-plain);
+    }
+
+    .hero-bg {
+      background: linear-gradient(to bottom, #f9f7f3, #ede6de);
+    }
+
+    .font-script { font-family: 'Great Vibes', cursive; }
+    .font-heading { font-family: 'Playfair Display', serif; }
+    .text-gold { color: var(--gold); }
+    .ornament {
+      width: 80px;
+      height: 2px;
+      background: var(--gold);
+      margin: 1.5rem auto;
+    }
+
+    .program-item {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .map-frame {
+      width: 100%;
+      height: 320px;
+      border: 0;
+      border-radius: 12px;
+    }
+
+    @media (max-width: 768px) {
+      .map-frame { height: 260px; }
+    }
+
+    .section-clean { padding: 6rem 1.5rem; }
+    .section-compact { padding: 3rem 1.5rem; }
+    .text-muted { color: var(--muted); }
+
+    .container { max-width: 1200px; margin: 0 auto; }
+  </style>
+</head>
+<body class="min-h-screen">
+
+  <!-- HERO SECTION (full-screen) -->
+  <section id="hero" class="relative hero-bg min-h-screen flex flex-col justify-center items-center text-center overflow-hidden px-6">
+    <div class="absolute inset-0 opacity-5" aria-hidden="true">
+      <div class="absolute top-10 left-10 w-32 h-32 border-2 rounded-full" style="border-color:var(--gold);"></div>
+      <div class="absolute bottom-10 right-10 w-48 h-48 border-2 rounded-full" style="border-color:var(--gold);"></div>
+    </div>
+
+    <div class="relative z-10 max-w-4xl mx-auto">
+      <p class="text-sm uppercase tracking-wider text-muted mb-4">With the blessings of our families</p>
+      <h1 id="hero-title" class="font-script text-6xl md:text-8xl text-gold mb-2">Dev & Beauty</h1>
+      <p id="hero-subtitle" class="text-lg md:text-xl font-light tracking-widest uppercase mb-4">are getting married</p>
+
+      <p id="hero-greeting" class="text-base md:text-lg italic mb-6">You are warmly invited to join us for a day of love, tradition & celebration.</p>
+
+      <div id="hero-ornament" class="ornament"></div>
+      <p id="hero-date" class="text-lg md:text-xl italic mt-6">26th November 2025</p>
+    </div>
+  </section>
+
+  <!-- COUPLE SECTION -->
+  <section class="section-clean bg-white section-compact">
+    <div class="container max-w-5xl mx-auto text-center">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div id="groom-card">
+          <h3 class="font-heading text-4xl md:text-5xl mb-4">Dev Ningombam</h3>
+          <p class="text-lg italic">Son of</p>
+          <p class="text-lg">Ningombam Dr. Ranjit Singha</p>
+          <p class="text-lg">&amp; Ng. Anita Ningombam</p>
+        </div>
+
+        <div id="bride-card">
+          <h3 class="font-heading text-4xl md:text-5xl mb-4">Beauty Khuraijam</h3>
+          <p class="text-lg italic">Daughter of</p>
+          <p class="text-lg">Khuraijam Bidya Chandra Singha</p>
+          <p class="text-lg">&amp; Khuraijam Bimola Singha</p>
+        </div>
+      </div>
+      <div class="ornament my-12"></div>
+    </div>
+  </section>
+
+  <!-- VENUE & DATE -->
+  <section class="section-compact bg-white">
+    <div class="container max-w-3xl mx-auto text-center">
+      <h2 class="font-heading text-3xl md:text-4xl mb-6">Wedding Ceremony</h2>
+      <p class="text-xl mb-2">Kalibari Road, Sonai</p>
+      <p class="text-lg">Cachar, Assam, India</p>
+      <div class="ornament my-8"></div>
+      <p class="text-2xl font-medium text-gold">26th November 2025</p>
+    </div>
+  </section>
+
+  <!-- PROGRAM SCHEDULE -->
+  <section class="section-clean bg-white">
+    <div class="container max-w-4xl mx-auto">
+      <h2 class="font-heading text-4xl text-center mb-12">Programme Schedule</h2>
+      <div class="space-y-10">
+        <div class="program-item text-center">
+          <h3 class="text-2xl font-medium text-gold">Heijingpot</h3>
+          <p class="text-3xl font-light mt-2">1:00 PM</p>
+        </div>
+        <div class="program-item text-center">
+          <h3 class="text-2xl font-medium text-gold">Luhonba</h3>
+          <p class="text-3xl font-light mt-2">4:30 PM</p>
+        </div>
+        <div class="program-item text-center">
+          <h3 class="text-2xl font-medium text-gold">Mou Thinba</h3>
+          <p class="text-3xl font-light mt-2">10:00 PM</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION (Google Maps Embed) -->
+  <section class="section-compact bg-white">
+    <div class="container max-w-5xl mx-auto">
+      <h2 class="font-heading text-3xl md:text-4xl text-center mb-6">Location</h2>
+
+      <a href="https://maps.app.goo.gl/2f1N4Didb8sL22iv5" target="_blank" rel="noopener noreferrer">
+        <iframe
+          class="map-frame"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=24.697064600203575,92.87274379552902&z=14&output=embed">
+        </iframe>
+      </a>
+
+      <div class="text-center mt-4">
+        <a href="https://maps.app.goo.gl/2f1N4Didb8sL22iv5"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 text-gold hover:underline text-lg">
+          <i data-feather="map-pin"></i>
+          Open in Google Maps
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-12 px-6 text-center text-sm bg-white">
+    <p class="italic">We can't wait to celebrate with you</p>
+    <p class="mt-4">With love, <span class="font-script text-xl text-gold">Dev & Beauty</span></p>
+  </footer>
+
+  <script>
+    feather.replace();
+
+    const tl = gsap.timeline();
+    tl.from("#hero-title", { y: -50, opacity: 0, duration: 1.2, ease: "power3.out" })
+      .from("#hero-subtitle", { y: 30, opacity: 0, duration: 0.8 }, "-=0.8")
+      .from("#hero-ornament", { scaleX: 0, duration: 0.8 }, "-=0.6")
+      .from("#hero-greeting", { y: 10, opacity: 0, duration: 0.8 }, "-=0.4")
+      .from("#hero-date", { y: 20, opacity: 0, duration: 0.8 }, "-=0.5");
+
+    gsap.from("#groom-card", { x: -100, opacity: 0, duration: 1, delay: 1.2 });
+    gsap.from("#bride-card", { x: 100, opacity: 0, duration: 1, delay: 1.2 });
+
+    gsap.utils.toArray(".program-item").forEach((item) => {
+      gsap.to(item, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        scrollTrigger: { trigger: item, start: "top 80%", toggleActions: "play none none reverse" }
+      });
+    });
+  </script>
+</body>
+</html>
