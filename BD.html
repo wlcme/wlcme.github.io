@@ -23,22 +23,20 @@
       --text:#4a3f35;
       --gold:#b89d6e;
       --muted:#7b6f67;
-      --white-plain: #ffffff;
+      --white-plain:#ffffff;
     }
 
-    html,body { height: 100%; }
     body {
-      /* Keep hero gradient, but other sections will use plain white backgrounds */
       font-family: 'Cormorant Garamond', serif;
       color: var(--text);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
       margin: 0;
-      background: var(--white-plain); /* default page background for sections */
+      background: var(--white-plain);
     }
+
     .hero-bg {
       background: linear-gradient(to bottom, #f9f7f3, #ede6de);
     }
+
     .font-script { font-family: 'Great Vibes', cursive; }
     .font-heading { font-family: 'Playfair Display', serif; }
     .text-gold { color: var(--gold); }
@@ -48,56 +46,52 @@
       background: var(--gold);
       margin: 1.5rem auto;
     }
+
     .program-item {
       opacity: 0;
       transform: translateY(30px);
     }
 
-    /* Map iframe */
     .map-frame {
       width: 100%;
       height: 320px;
       border: 0;
       border-radius: 12px;
-      display: block;
-      /* flat look: no shadow */
     }
+
     @media (max-width: 768px) {
       .map-frame { height: 260px; }
     }
 
-    /* Clean section containers (no cards, no shadows) */
     .section-clean { padding: 6rem 1.5rem; }
     .section-compact { padding: 3rem 1.5rem; }
     .text-muted { color: var(--muted); }
 
-    /* small helper */
-    .container { max-width: 1200px; margin-left: auto; margin-right: auto; }
+    .container { max-width: 1200px; margin: 0 auto; }
   </style>
 </head>
 <body class="min-h-screen">
 
-  <!-- HERO SECTION (keeps gradient background) -->
-  <section class="relative py-20 px-6 text-center overflow-hidden hero-bg" id="hero">
+  <!-- HERO SECTION (full-screen) -->
+  <section id="hero" class="relative hero-bg min-h-screen flex flex-col justify-center items-center text-center overflow-hidden px-6">
     <div class="absolute inset-0 opacity-5" aria-hidden="true">
-      <div class="absolute top-10 left-10 w-32 h-32 border-2" style="border-color:var(--gold); border-radius:9999px;"></div>
-      <div class="absolute bottom-10 right-10 w-48 h-48 border-2" style="border-color:var(--gold); border-radius:9999px;"></div>
+      <div class="absolute top-10 left-10 w-32 h-32 border-2 rounded-full" style="border-color:var(--gold);"></div>
+      <div class="absolute bottom-10 right-10 w-48 h-48 border-2 rounded-full" style="border-color:var(--gold);"></div>
     </div>
 
-    <div class="relative z-10 max-w-4xl mx-auto container">
-      <p class="text-sm uppercase tracking-wider text-muted mb-4" style="color:var(--muted)">With the blessings of our families</p>
-      <h1 class="font-script text-6xl md:text-8xl text-gold mb-2" id="hero-title">Dev & Beauty</h1>
-      <p class="text-lg md:text-xl font-light tracking-widest uppercase mb-4" id="hero-subtitle">are getting married</p>
+    <div class="relative z-10 max-w-4xl mx-auto">
+      <p class="text-sm uppercase tracking-wider text-muted mb-4">With the blessings of our families</p>
+      <h1 id="hero-title" class="font-script text-6xl md:text-8xl text-gold mb-2">Dev & Beauty</h1>
+      <p id="hero-subtitle" class="text-lg md:text-xl font-light tracking-widest uppercase mb-4">are getting married</p>
 
-      <!-- Greeting -->
-      <p class="text-base md:text-lg italic mb-6" id="hero-greeting">You are warmly invited to join us for a day of love, tradition & celebration.</p>
+      <p id="hero-greeting" class="text-base md:text-lg italic mb-6">You are warmly invited to join us for a day of love, tradition & celebration.</p>
 
-      <div class="ornament" id="hero-ornament" aria-hidden="true"></div>
-      <p class="text-lg md:text-xl italic mt-6" id="hero-date">26th November 2025</p>
+      <div id="hero-ornament" class="ornament"></div>
+      <p id="hero-date" class="text-lg md:text-xl italic mt-6">26th November 2025</p>
     </div>
   </section>
 
-  <!-- COUPLE SECTION (plain background) -->
+  <!-- COUPLE SECTION -->
   <section class="section-clean bg-white section-compact">
     <div class="container max-w-5xl mx-auto text-center">
       <div class="grid md:grid-cols-2 gap-12 items-center">
@@ -119,7 +113,7 @@
     </div>
   </section>
 
-  <!-- VENUE & DATE (plain background) -->
+  <!-- VENUE & DATE -->
   <section class="section-compact bg-white">
     <div class="container max-w-3xl mx-auto text-center">
       <h2 class="font-heading text-3xl md:text-4xl mb-6">Wedding Ceremony</h2>
@@ -130,7 +124,7 @@
     </div>
   </section>
 
-  <!-- PROGRAM SCHEDULE (plain background) -->
+  <!-- PROGRAM SCHEDULE -->
   <section class="section-clean bg-white">
     <div class="container max-w-4xl mx-auto">
       <h2 class="font-heading text-4xl text-center mb-12">Programme Schedule</h2>
@@ -151,14 +145,12 @@
     </div>
   </section>
 
-  <!-- LOCATION (Google Maps embed preview) -->
+  <!-- LOCATION (Google Maps Embed) -->
   <section class="section-compact bg-white">
     <div class="container max-w-5xl mx-auto">
       <h2 class="font-heading text-3xl md:text-4xl text-center mb-6">Location</h2>
 
-      <!-- Google Maps embed iframe (uses your coordinates) -->
-      <!-- Using q=lat,lng with output=embed as a simple preview. -->
-      <a href="https://maps.app.goo.gl/2f1N4Didb8sL22iv5" target="_blank" rel="noopener noreferrer" aria-label="Open location in Google Maps">
+      <a href="https://maps.app.goo.gl/2f1N4Didb8sL22iv5" target="_blank" rel="noopener noreferrer">
         <iframe
           class="map-frame"
           loading="lazy"
@@ -187,22 +179,19 @@
   </footer>
 
   <script>
-    // ---------- Feather Icons ----------
     feather.replace();
 
-    // ---------- GSAP Animations ----------
     const tl = gsap.timeline();
-
-    tl.from("#hero-title",   { y: -50, opacity: 0, duration: 1.2, ease: "power3.out" })
-      .from("#hero-subtitle", { y: 30,  opacity: 0, duration: 0.8 }, "-=0.8")
+    tl.from("#hero-title", { y: -50, opacity: 0, duration: 1.2, ease: "power3.out" })
+      .from("#hero-subtitle", { y: 30, opacity: 0, duration: 0.8 }, "-=0.8")
       .from("#hero-ornament", { scaleX: 0, duration: 0.8 }, "-=0.6")
       .from("#hero-greeting", { y: 10, opacity: 0, duration: 0.8 }, "-=0.4")
-      .from("#hero-date",     { y: 20,  opacity: 0, duration: 0.8 }, "-=0.5");
+      .from("#hero-date", { y: 20, opacity: 0, duration: 0.8 }, "-=0.5");
 
     gsap.from("#groom-card", { x: -100, opacity: 0, duration: 1, delay: 1.2 });
-    gsap.from("#bride-card", { x:  100, opacity: 0, duration: 1, delay: 1.2 });
+    gsap.from("#bride-card", { x: 100, opacity: 0, duration: 1, delay: 1.2 });
 
-    gsap.utils.toArray(".program-item").forEach((item, i) => {
+    gsap.utils.toArray(".program-item").forEach((item) => {
       gsap.to(item, {
         opacity: 1,
         y: 0,
