@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-
 <!-- Open Graph / WhatsApp / Facebook Preview -->
 <meta property="og:title" content="Dev & Beauty | Wedding Invitation" />
 <meta property="og:description" content="You are cordially invited to celebrate the wedding of Dev & Beauty — 26th November 2025 at Kalibari Road, Sonai, Cachar, Assam." />
@@ -12,83 +11,81 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://wlcme.com/DevBeauty/" />
 
-<!-- Twitter Card (for X / Twitter link previews) -->
+<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Dev & Beauty | Wedding Invitation" />
 <meta name="twitter:description" content="Join us for a day of love, tradition, and celebration — 26th November 2025, Kalibari Road, Sonai." />
 <meta name="twitter:image" content="https://wlcme.com/DevBeauty/Preview.jpg" />
 
-  
-  <title>Dev & Beauty | Wedding Invitation</title>
+<title>Dev & Beauty | Wedding Invitation</title>
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Feather Icons -->
-  <script src="https://unpkg.com/feather-icons"></script>
+<!-- Feather Icons -->
+<script src="https://unpkg.com/feather-icons"></script>
 
-  <!-- GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-  <!-- Luxury Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
-  <style>
-    :root{
-      --text:#4a3f35;
-      --gold:#b89d6e;
-      --muted:#7b6f67;
-      --white-plain:#ffffff;
-    }
+<style>
+  :root {
+    --text:#4a3f35;
+    --gold:#b89d6e;
+    --muted:#7b6f67;
+    --white-plain:#ffffff;
+  }
 
-    body {
-      font-family: 'Cormorant Garamond', serif;
-      color: var(--text);
-      margin: 0;
-      background: var(--white-plain);
-    }
+  body {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--text);
+    margin: 0;
+    background: var(--white-plain);
+  }
 
-    .hero-bg {
-      background: linear-gradient(to bottom, #f9f7f3, #ede6de);
-    }
+  .hero-bg {
+    background: linear-gradient(to bottom, #f9f7f3, #ede6de);
+  }
 
-    .font-script { font-family: 'Great Vibes', cursive; }
-    .font-heading { font-family: 'Playfair Display', serif; }
-    .text-gold { color: var(--gold); }
-    .ornament {
-      width: 80px;
-      height: 2px;
-      background: var(--gold);
-      margin: 1.5rem auto;
-    }
+  .font-script { font-family: 'Great Vibes', cursive; }
+  .font-heading { font-family: 'Playfair Display', serif; }
+  .text-gold { color: var(--gold); }
+  .ornament {
+    width: 80px;
+    height: 2px;
+    background: var(--gold);
+    margin: 1.5rem auto;
+  }
 
-    .program-item {
-      opacity: 0;
-      transform: translateY(30px);
-    }
+  .program-item {
+    opacity: 0;
+    transform: translateY(30px);
+  }
 
-    .map-frame {
-      width: 100%;
-      height: 320px;
-      border: 0;
-      border-radius: 12px;
-    }
+  .map-frame {
+    width: 100%;
+    height: 320px;
+    border: 0;
+    border-radius: 12px;
+  }
 
-    @media (max-width: 768px) {
-      .map-frame { height: 260px; }
-    }
+  @media (max-width: 768px) {
+    .map-frame { height: 260px; }
+  }
 
-    .section-clean { padding: 6rem 1.5rem; }
-    .section-compact { padding: 3rem 1.5rem; }
-    .text-muted { color: var(--muted); }
-
-    .container { max-width: 1200px; margin: 0 auto; }
-  </style>
+  .section-clean { padding: 6rem 1.5rem; }
+  .section-compact { padding: 3rem 1.5rem; }
+  .text-muted { color: var(--muted); }
+  .container { max-width: 1200px; margin: 0 auto; }
+</style>
 </head>
 <body class="min-h-screen">
 
-  <!-- HERO SECTION (full-screen) -->
+  <!-- HERO SECTION -->
   <section id="hero" class="relative hero-bg min-h-screen flex flex-col justify-center items-center text-center overflow-hidden px-6">
     <div class="absolute inset-0 opacity-5" aria-hidden="true">
       <div class="absolute top-10 left-10 w-32 h-32 border-2 rounded-full" style="border-color:var(--gold);"></div>
@@ -132,6 +129,15 @@
   <!-- VENUE & DATE -->
   <section class="section-compact bg-white">
     <div class="container max-w-3xl mx-auto text-center">
+
+      <!-- 💍 Added Image Above the Wedding Ceremony Heading -->
+      <img 
+        src="https://wlcme.com/DevBeauty/Img1.png" 
+        alt="Dev & Beauty" 
+        class="mx-auto mb-8 w-56 md:w-72 lg:w-80" 
+        loading="lazy"
+      />
+
       <h2 class="font-heading text-3xl md:text-4xl mb-6">Wedding Ceremony</h2>
       <p class="text-xl mb-2">Kalibari Road, Sonai</p>
       <p class="text-lg">Cachar, Assam, India</p>
@@ -140,7 +146,7 @@
     </div>
   </section>
 
-  <!-- PROGRAM SCHEDULE -->
+  <!-- PROGRAM -->
   <section class="section-clean bg-white">
     <div class="container max-w-4xl mx-auto">
       <h2 class="font-heading text-4xl text-center mb-12">Programme Schedule</h2>
@@ -161,19 +167,17 @@
     </div>
   </section>
 
-  <!-- LOCATION (Google Maps Embed) -->
+  <!-- MAP -->
   <section class="section-compact bg-white">
     <div class="container max-w-5xl mx-auto">
       <h2 class="font-heading text-3xl md:text-4xl text-center mb-6">Location</h2>
-
-       <iframe
-          class="map-frame"
-          loading="lazy"
-          allowfullscreen
-          referrerpolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps?q=24.725138,92.883927&z=14&output=embed">
-        </iframe>
-     
+      <iframe
+        class="map-frame"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=24.725138,92.883927&z=14&output=embed">
+      </iframe>
     </div>
   </section>
 
@@ -188,7 +192,6 @@
 
   <script>
     feather.replace();
-
     const tl = gsap.timeline();
     tl.from("#hero-title", { y: -50, opacity: 0, duration: 1.2, ease: "power3.out" })
       .from("#hero-subtitle", { y: 30, opacity: 0, duration: 0.8 }, "-=0.8")
