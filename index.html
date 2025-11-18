@@ -10,27 +10,12 @@
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            serif: ['"Playfair Display"', 'serif'],
-            sans: ['Inter', 'sans-serif'],
-          },
-          colors: {
-            brandBlue: '#3B82F6',
-            softGray: '#f9fafb',
-          },
-        },
-      },
-    };
-  </script>
 
   <!-- Feather Icons -->
   <script src="https://unpkg.com/feather-icons"></script>
 
   <style>
+    /* Page defaults */
     body {
       font-family: 'Inter', sans-serif;
       background: white;
@@ -38,6 +23,12 @@
       overflow-x: hidden;
       overflow-y: auto;
     }
+
+    /* Ensure Tailwind's font-serif class uses Playfair Display */
+    .font-serif {
+      font-family: 'Playfair Display', serif !important;
+    }
+
     canvas {
       position: fixed;
       top: 0;
@@ -49,14 +40,14 @@
       z-index: -1;
       background: white;
     }
+
     .icon {
       width: 24px;
       height: 24px;
       stroke-width: 1.8;
       margin-bottom: 12px;
-      color: #3B82F6;
+      color: #3B82F6; /* decorative colour for native icons */
     }
-    
   </style>
 </head>
 <body class="flex flex-col items-center justify-start min-h-screen">
@@ -78,7 +69,7 @@
     </div>
 
     <p class="text-lg md:text-xl text-gray-600 max-w-xl mx-auto mb-8">
-      We craft <span class="text-brandBlue font-medium">digital invitation cards</span> that make your
+      We craft <span class="text-blue-500 font-medium">digital invitation cards</span> that make your
       special moments elegant and memorable — for weddings, birthdays, corporate events, and more.
     </p>
 
@@ -89,7 +80,7 @@
          <i data-feather="mail" class="w-5 h-5"></i> Email Us
       </a>
 
-      <a href="https://instagram.com/wlcme_com" target="_blank" rel="noopener"
+      <a href="https://instagram.com/wlcme___" target="_blank" rel="noopener"
          class="px-5 py-3 text-lg bg-black text-white hover:bg-white hover:text-black border border-black transition font-medium flex items-center justify-center gap-2">
          <i data-feather="instagram" class="w-5 h-5"></i> Instagram
       </a>
@@ -169,35 +160,35 @@
     <div class="grid md:grid-cols-2 gap-10 justify-center">
 
       <!-- Basic Plan -->
-      <div class="border border-gray-200 p-10 rounded-2xl shadow-sm hover:shadow-lg transition bg-softGray text-center flex flex-col justify-between">
+      <div class="border border-gray-200 p-10 rounded-2xl shadow-sm hover:shadow-lg transition bg-gray-50 text-center flex flex-col justify-between">
         <div>
           <h3 class="text-2xl font-serif font-bold mb-2">Basic Plan</h3>
           <p class="text-gray-600 mb-4">Simple Digital Invitation Website</p>
-          <div class="text-5xl font-bold text-brandBlue mb-8">₹999</div>
+          <div class="text-5xl font-bold text-blue-500 mb-8">₹999</div>
 
           <ul class="text-gray-700 text-sm text-left space-y-3 max-w-xs mx-auto">
             <li class="flex items-center gap-3">
-              <i data-feather="check-circle" class="w-5 h-5 text-brandBlue"></i>
+              <i data-feather="check-circle" class="w-5 h-5 text-blue-500"></i>
               Elegant single-page design
             </li>
             <li class="flex items-center gap-3">
-              <i data-feather="check-circle" class="w-5 h-5 text-brandBlue"></i>
+              <i data-feather="check-circle" class="w-5 h-5 text-blue-500"></i>
               Custom event details
             </li>
             <li class="flex items-center gap-3">
-              <i data-feather="map-pin" class="w-5 h-5 text-brandBlue"></i>
+              <i data-feather="map-pin" class="w-5 h-5 text-blue-500"></i>
               Location map integration
             </li>
             <li class="flex items-center gap-3">
-              <i data-feather="share-2" class="w-5 h-5 text-brandBlue"></i>
+              <i data-feather="share-2" class="w-5 h-5 text-blue-500"></i>
               Share via link or Instagram
             </li>
           </ul>
         </div>
 
         <div class="mt-10">
-          <a href="https://instagram.com/wlcme_com" target="_blank" rel="noopener"
-             class="px-6 py-3 text-white bg-brandBlue hover:bg-black transition rounded-lg font-medium inline-flex items-center justify-center gap-2">
+          <a href="https://instagram.com/wlcme___" target="_blank" rel="noopener"
+             class="px-6 py-3 text-white bg-blue-500 hover:bg-black transition rounded-lg font-medium inline-flex items-center justify-center gap-2">
             <i data-feather="shopping-bag" class="w-5 h-5"></i> Get Started
           </a>
         </div>
@@ -208,31 +199,31 @@
         <div>
           <h3 class="text-2xl font-serif font-bold mb-2">Custom Plan</h3>
           <p class="text-gray-600 mb-4">Tailored Design Based on Features</p>
-          <div class="text-5xl font-bold text-brandBlue mb-8">Custom Quote</div>
+          <div class="text-5xl font-bold text-blue-500 mb-8">Custom Quote</div>
 
           <ul class="text-gray-700 text-sm text-left space-y-3 max-w-xs mx-auto">
             <li class="flex items-center gap-3">
-              <i data-feather="zap" class="w-5 h-5 text-brandBlue"></i>
+              <i data-feather="zap" class="w-5 h-5 text-blue-500"></i>
               Animations, music & RSVP
             </li>
             <li class="flex items-center gap-3">
-              <i data-feather="globe" class="w-5 h-5 text-brandBlue"></i>
+              <i data-feather="globe" class="w-5 h-5 text-blue-500"></i>
               Multi-language support
             </li>
             <li class="flex items-center gap-3">
-              <i data-feather="clock" class="w-5 h-5 text-brandBlue"></i>
+              <i data-feather="clock" class="w-5 h-5 text-blue-500"></i>
               Timeline & countdown
             </li>
             <li class="flex items-center gap-3">
-              <i data-feather="user-check" class="w-5 h-5 text-brandBlue"></i>
+              <i data-feather="user-check" class="w-5 h-5 text-blue-500"></i>
               Personalized guest invites
             </li>
           </ul>
         </div>
 
         <div class="mt-10">
-          <a href="https://instagram.com/wlcme_com" target="_blank" rel="noopener"
-             class="px-6 py-3 text-white bg-black hover:bg-brandBlue transition rounded-lg font-medium inline-flex items-center justify-center gap-2">
+          <a href="https://instagram.com/wlcme___" target="_blank" rel="noopener"
+             class="px-6 py-3 text-white bg-black hover:bg-blue-500 transition rounded-lg font-medium inline-flex items-center justify-center gap-2">
             <i data-feather="send" class="w-5 h-5"></i> Request Quote
           </a>
         </div>
@@ -248,32 +239,32 @@
       
       <div class="bg-white border border-gray-200 p-6 rounded-xl shadow-sm text-center hover:shadow-md transition">
         <p class="text-gray-600 italic mb-4">“Absolutely stunning! Our wedding invitations received so many compliments.”</p>
-        <h4 class="font-semibold text-brandBlue">— Priya & Rohan</h4>
+        <h4 class="font-semibold text-blue-500">— Priya & Rohan</h4>
       </div>
 
       <div class="bg-white border border-gray-200 p-6 rounded-xl shadow-sm text-center hover:shadow-md transition">
         <p class="text-gray-600 italic mb-4">“Loved the countdown feature and interactive design — so easy to use!”</p>
-        <h4 class="font-semibold text-brandBlue">— Aisha Ahmed</h4>
+        <h4 class="font-semibold text-blue-500">— Aisha Ahmed</h4>
       </div>
 
       <div class="bg-white border border-gray-200 p-6 rounded-xl shadow-sm text-center hover:shadow-md transition">
         <p class="text-gray-600 italic mb-4">“The personalized invites made our guests feel truly special. Highly recommended!”</p>
-        <h4 class="font-semibold text-brandBlue">— Neeraj Sharma</h4>
+        <h4 class="font-semibold text-blue-500">— Neeraj Sharma</h4>
       </div>
 
       <div class="bg-white border border-gray-200 p-6 rounded-xl shadow-sm text-center hover:shadow-md transition">
         <p class="text-gray-600 italic mb-4">“The QR check-in saved us hours at the event — smooth and elegant experience.”</p>
-        <h4 class="font-semibold text-brandBlue">— Daniel & Lara</h4>
+        <h4 class="font-semibold text-blue-500">— Daniel & Lara</h4>
       </div>
 
       <div class="bg-white border border-gray-200 p-6 rounded-xl shadow-sm text-center hover:shadow-md transition">
         <p class="text-gray-600 italic mb-4">“Amazing support and fast setup! The timeline view impressed everyone.”</p>
-        <h4 class="font-semibold text-brandBlue">— Rahul Patel</h4>
+        <h4 class="font-semibold text-blue-500">— Rahul Patel</h4>
       </div>
 
       <div class="bg-white border border-gray-200 p-6 rounded-xl shadow-sm text-center hover:shadow-md transition">
         <p class="text-gray-600 italic mb-4">“Sharing to Instagram was effortless, and guests loved the elegant design.”</p>
-        <h4 class="font-semibold text-brandBlue">— Sophia Khan</h4>
+        <h4 class="font-semibold text-blue-500">— Sophia Khan</h4>
       </div>
 
     </div>
@@ -294,9 +285,9 @@
     </div>
 
     <div class="mt-3 flex justify-center gap-3 text-gray-600">
-      <a href="./privacy-policy.html" class="text-brandBlue hover:underline">Privacy Policy</a>
+      <a href="./privacy-policy.html" class="text-blue-500 hover:underline">Privacy Policy</a>
       <span>|</span>
-      <a href="./terms-and-conditions.html" class="text-brandBlue hover:underline">Terms & Conditions</a>
+      <a href="./terms-and-conditions.html" class="text-blue-500 hover:underline">Terms & Conditions</a>
     </div>
   </footer>
 
