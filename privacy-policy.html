@@ -3,28 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy | WELCOME </title>
+  <title>Privacy Policy | WELCOME</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            serif: ['"Playfair Display"', 'serif'],
-            sans: ['Inter', 'sans-serif'],
-          },
-          colors: {
-            brandBlue: '#3B82F6',
-          },
-        },
-      },
-    };
-  </script>
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
 
   <!-- Feather Icons -->
   <script src="https://unpkg.com/feather-icons"></script>
@@ -35,9 +21,24 @@
       background: white;
       color: #111;
     }
+
+    /* Added instead of Tailwind config */
+    .font-serif {
+      font-family: "Playfair Display", serif !important;
+    }
+
+    .font-sans {
+      font-family: "Inter", sans-serif !important;
+    }
+
+    .text-brandBlue {
+      color: #3B82F6 !important;
+    }
   </style>
 </head>
+
 <body class="flex flex-col items-center min-h-screen">
+
   <!-- Header -->
   <header class="w-full text-center py-12 bg-gray-50 border-b border-gray-200">
     <h1 class="text-4xl md:text-5xl font-serif font-bold text-black mb-2">Privacy Policy</h1>
