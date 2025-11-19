@@ -8,24 +8,8 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            serif: ['"Playfair Display"', 'serif'],
-            sans: ['Inter', 'sans-serif'],
-          },
-          colors: {
-            brandBlue: '#3B82F6',
-            softGray: '#f9fafb',
-          },
-        },
-      },
-    };
-  </script>
+  <!-- Tailwind CSS (No config) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
 
   <!-- Feather Icons -->
   <script src="https://unpkg.com/feather-icons"></script>
@@ -48,8 +32,29 @@
       z-index: -1;
       background: white;
     }
+
+    /* Replacing Tailwind config extension */
+    .font-serif {
+      font-family: "Playfair Display", serif !important;
+    }
+    .font-sans {
+      font-family: "Inter", sans-serif !important;
+    }
+    .text-brandBlue {
+      color: #3B82F6 !important;
+    }
+    .bg-brandBlue {
+      background-color: #3B82F6 !important;
+    }
+    .text-softGray {
+      color: #f9fafb !important;
+    }
+    .bg-softGray {
+      background-color: #f9fafb !important;
+    }
   </style>
 </head>
+
 <body class="flex flex-col items-center justify-center min-h-screen text-center px-6">
 
   <!-- Canvas Animation Background -->
@@ -69,7 +74,7 @@
 
   <!-- Subtle Footer -->
   <footer class="absolute bottom-6 text-gray-500 text-sm flex items-center justify-center gap-2">
-    <span>© 2025 WELCOME Invitations • Designed with</span>
+    <span>© 2025 WELCOME • Designed with</span>
     <i data-feather="heart" class="w-4 h-4 text-brandBlue"></i>
     <span>for your celebrations</span>
   </footer>
